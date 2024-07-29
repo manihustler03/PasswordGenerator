@@ -1,40 +1,75 @@
-{% include 'app/base.html'%}
+{% include 'app/base.html'%} {% block content %}
+<nav>
+  <div class="py-5 bg-slate-900 text-gray-300 flex justify-center w-full">
+    <h2 class="font-bold text-2xl flex items-center gap-2">
+      Password Generator<ion-icon name="lock-closed-outline"></ion-icon>
+    </h2>
+  </div>
+</nav>
+<section class="flex justify-center flex-col text-center items-center">
+  <div class="py-14">
+    <h5 class="text-2xl font-semibold">Generate Rondom Password</h5>
+    <h6 class="text-lg text-gray-500 pt-3">
+      Secure and Safe Way to Create Password
+    </h6>
+    <div class="h-10 mt-5">
+      <button class="bg-slate-900 h-full px-4 text-gray-100 text-xl">+</button>
+      <input type="text" class="w-20" name="length" />
+      <button class="bg-slate-900 h-full px-4 text-gray-100 text-xl">-</button>
+    </div>
+    <div class="flex gap-10 justify-center pt-5">
+      <div class="flex items-center mb-4">
+        <input
+          id="ABC"
+          type="checkbox"
+          name="uppercase"
+          value="ABC"
+          class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label for="ABC" class="ms-2 text-lg font-medium">ABC</label>
+      </div>
+      <div class="flex items-center mb-4">
+        <input
+          id="abc"
+          type="checkbox"
+          name="lowercase"
+          value="abc"
+          class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label for="abc" class="ms-2 text-lg font-medium">abc</label>
+      </div>
+      <div class="flex items-center mb-4">
+        <input
+          id="!@#"
+          type="checkbox"
+          value="!@#"
+          name="special"
+          class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label for="!@#" class="ms-2 text-lg font-medium">!@#</label>
+      </div>
+      <div class="flex items-center mb-4">
+        <input
+          id="12"
+          type="checkbox"
+          value="123"
+          name="number"
+          class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label for="12" class="ms-2 text-lg font-medium">123</label>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="bg-slate-800 text-white px-4 py-2 text-lg mt-3 cursor-pointer tracking-wider rounded-md"
+    >
+      Click To Generate
+    </button>
 
-{% block content %}
-    <nav>
-        <div class="py-3 bg-gray-100 flex justify-center w-full">
-            <h2 class="font-bold text-2xl">Password Generator</h2>
-        </div>
-    </nav>
-    <section class="flex justify-center flex-col text-center items-center">
-        <div class=" py-24">
-            <h5 class="text-2xl font-semibold">Generate Rondom Password</h5>
-            <h6 class="text-lg text-gray-500 pt-3">Secure and Safe Way to Create Password </h6>
-            <div class="h-10 mt-5">
-                <button class="bg-slate-900 h-full  px-4 text-gray-100 text-xl">+</button>
-                <input type="text" class="w-20">
-                <button class="bg-slate-900 h-full  px-4 text-gray-100 text-xl">-</button>
-            </div>
-            <div class="flex gap-10 justify-center pt-5">
-                <div class="flex items-center mb-4">
-                    <input id="ABC" type="checkbox" value="ABC" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="ABC" class="ms-2 text-md font-medium ">ABC</label>
-                </div>
-                <div class="flex items-center mb-4">
-                    <input id="abc" type="checkbox" value="abc" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="abc" class="ms-2 text-md font-medium ">abc</label>
-                </div>
-                <div class="flex items-center mb-4">
-                    <input id="!@#" type="checkbox" value="!@#" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="!@#" class="ms-2 text-md font-medium ">!@#</label>
-                </div>
-                <div class="flex items-center mb-4">
-                    <input id="12" type="checkbox" value="123" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="12" class="ms-2 text-md font-medium ">123</label>
-                </div>
-                
-            </div>
-            <button type="button" class="bg-slate-800 text-white px-4 py-2 text-lg mt-10 cursor-pointer">Click To Generate</button>
-        </div>
-    </section>
+    <div class="flex gap-3 justify-center items-center mt-5 bg-slate-800 py-3 mx-10 rounded-md text-lg font-semibold tracking-widest">
+      <h4 class="bg-slate-800 px-5 text-white ">FFQ2@JKjj</h4>
+      <ion-icon name="copy-outline" class="text-white"></ion-icon>
+    </div>
+  </div>
+</section>
 {% endblock %}
