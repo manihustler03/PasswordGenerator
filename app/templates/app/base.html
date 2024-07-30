@@ -44,6 +44,27 @@
             font-family: "Alata", sans-serif;
             font-weight: 500;
           }
+          .container {
+    position: relative; /* Ensures tooltips are positioned relative to this container */
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    display: none;
+    z-index: 1000; /* Ensure it's on top of other elements */
+    right: 5px;
+    bottom: 37px;
+
+}
+
+.tooltip.show {
+    display: block; /* Show when needed */
+}
         
     </style>
   </head>

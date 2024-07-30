@@ -7,45 +7,53 @@
     </h2>
   </div>
 </nav>
-<section class="flex justify-between px-20 items-center">
-  <div class="relative ">
+<section class="flex flex-col md:flex-row  px-4 md:px-20 gap-10 items-center w-full">
+  <!-- Left Column -->
+  <div class="relative w-full mt-10 md:mt-0 md:w-1/2">
     <h2 class="text-2xl font-semibold z-10 relative title text-slate-900">GenPass</h2>
     <h6 class="text-3xl py-5 z-10 relative title-p">
       Instantly generate a secure, random <span class="block">password with the GenPass online tool </span>
     </h6>
-    <img src="{% static 'shield.jpg' %}" alt="Image" class="absolute top-28 right-0 z-0 w-52">
-</div>
-  <div class="flex justify-center flex-col text-center items-center mt-5">
-    <form class="mt-4 shadow-xl px-20 py-10  bg-gradient-to-b from-slate-700 to-slate-900 border  rounded-xl">
-      <h5 class="text-2xl font-semibold bg-gray-100  rounded-lg px-4 py-2">Generate Rondom Password</h5>
+    <img src="{% static 'shield.jpg' %}" alt="Image" class=" mt-8 md:mt-0 absolute top-28 right-0 z-0 w-52">
+  </div>
+   <!-- Right Column -->
+   <div class="flex justify-center flex-col text-center items-center mt-20 md:mt-5 w-full md:w-1/2">
+    <form class="mt-4 shadow-xl px-10 md:px-20 py-10 md:py-10  bg-gradient-to-b from-slate-700 to-slate-900 border  rounded-xl">
+      <h5 class="text-xl md:text-2xl font-semibold bg-gray-100  rounded-lg px-4 py-2">Generate Rondom Password</h5>
      
       <div class="h-10 mt-5">
         <div class="flex  flex-col  items-center">
-          <input id="pi_input" size="any" min="0" value="" max="64" type="range" name="len" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg " />
+          <input id="pi_input" size="any" min="0" value="" max="32" type="range" name="len" class="w-10/12 md:w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg " />
           <p  class="text-lg font-medium text-white pt-3">Range : <output id="value"></output></p>
         </div>
       </div>
       <div class="flex gap-10 justify-center pt-5">
+       <div class="flex flex-col md:flex-row">
         <div class="flex items-center mb-4">
           <input id="ABC" checked type="checkbox" name="uppercase" value="ABC"
             class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-          <label for="ABC" class="ms-2 text-lg font-medium text-white">ABC</label>
+          <label for="ABC" class="ms-2 md:text-lg font-medium text-white">ABC</label>
         </div>
         <div class="flex items-center mb-4">
           <input id="abc" checked type="checkbox" name="lowercase" value="abc"
             class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
           <label for="abc" class="ms-2 text-lg font-medium text-white">abc</label>
         </div>
+       </div>
+       <div class="flex flex-col md:flex-row">
         <div class="flex items-center mb-4">
-          <input id="!@#" type="checkbox" value="!@#" name="special"
+          <input id="!@#" checked type="checkbox" value="!@#" name="special"
             class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
           <label for="!@#" class="ms-2 text-lg font-medium text-white">!@#</label>
         </div>
         <div class="flex items-center mb-4">
-          <input id="12" type="checkbox" value="123" name="number"
+          <input id="12" checked type="checkbox" value="123" name="number"
             class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
           <label for="12" class="ms-2 text-lg font-medium text-white">123</label>
         </div>
+       </div>
+       
+        
       </div>
       <input type="submit" checked
         class="bg-slate-700 text-white px-4 py-2 text-lg mt-3 cursor-pointer tracking-wider rounded-md"
@@ -53,14 +61,22 @@
       </input>
   
       <div
-        class="flex gap-3 justify-center items-center mt-5 bg-slate-700 py-3 mx-10 rounded-md text-lg font-semibold tracking-widest">
-        <h4 class="bg-slate-700 px-5 text-white " , name="password">{{password}}</h4>
-        <ion-icon name="copy-outline" class="text-white"></ion-icon>
+        class="flex gap-3 relative justify-center items-center mt-5 bg-slate-700 py-3 mx-10 rounded-md text-lg font-semibold tracking-widest">
+        <div class="w-28 overflow-hidden">
+          <h4 class="bg-slate-700 px-5 text-white text-sm " id="text-to-copy"  name="password">{{password }}</h4>
+        </div>
+        <ion-icon name="copy-outline" class="text-white " id="copy-button"></ion-icon>
+        <div id="tooltip" class="tooltip hidden">Copied!</div>
       </div>
     </form>
+    
   </div>
-  
+ 
 </section>
+<footer>
+  <p></p>
+</footer>
+
 
 {% endblock %}
 {% block script %}
@@ -79,7 +95,18 @@
         }
         inputElement.addEventListener("input", updateValue);
 
-        
+        document.getElementById('copy-button').addEventListener('click', () => {
+            const textToCopy = document.getElementById('text-to-copy').textContent;
+            navigator.clipboard.writeText(textToCopy)
+                // Show "Copied!" tooltip
+    tooltip.classList.add('show');
+    
+    // Hide "Copied!" tooltip after 2 seconds
+    setTimeout(() => {
+        tooltip.classList.remove('show');
+    }, 2000); // Adjust time as needed
+
+        });
         
  </script>
 {% endblock %}
