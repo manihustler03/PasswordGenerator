@@ -1,4 +1,5 @@
 {% load static tailwind_tags %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,19 +13,52 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Ultra&display=swap"
+      rel="stylesheet"
+    />
     {% tailwind_css %}
     <style>
-        body{
+          body {
             font-family: "Nunito", sans-serif;
-        }
+          }
+          input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Remove default styling */
+            width: 20px; /* Thumb width */
+            height: 20px; /* Thumb height */
+            background: #2200ff; /* Thumb color */
+            border-radius: 50%; /* Rounded thumb */
+            cursor: pointer; /* Pointer cursor on hover */
+          }
+          .title{
+            font-family: "Alata", sans-serif;
+            font-weight: 900;
+            font-size: 35px;
+            letter-spacing: 1px;
+            
+
+          }
+          .title-p{
+            font-family: "Alata", sans-serif;
+            font-weight: 500;
+          }
+        
     </style>
   </head>
-  <body>
-    {% block content %} {% endblock %}
+  <body >
+    {% block content %} {% endblock %} {% block script %} {% endblock %}
   </body>
-  <script>
-    localStorage.setItem('special','!@#$')
-  </script>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script></script>
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+  ></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</script>
 </html>

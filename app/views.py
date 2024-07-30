@@ -20,13 +20,16 @@ def homePage(request):
         
     try:
         length = int(request.GET.get('len', 8))
+        
     except ValueError:
-        length = 8
+        length=8
+        
 
     if not char:
         char.extend('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
 
     gen_password = ''.join(random.choice(char) for i in range(length))
+
     
     
     return render(request,'app/home.html', {'password':gen_password})

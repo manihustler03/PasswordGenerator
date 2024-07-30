@@ -1,77 +1,78 @@
+{% load static %}
 {% include 'app/base.html'%} {% block content %}
 <nav>
-  <div class="py-5 bg-slate-900 text-gray-300 flex justify-center w-full">
-    <h2 class="font-bold text-2xl flex items-center gap-2">
+  <div class="py-5  border-b bg-gradient-to-r from-slate-700 to-slate-950 text-white flex justify-center w-full">
+    <h2 class="font-bold text-2xl flex items-center gap-2 tracking-wider">
       Password Generator<ion-icon name="lock-closed-outline"></ion-icon>
     </h2>
   </div>
 </nav>
-<section class="flex justify-center flex-col text-center items-center">
-  <form class="py-14">
-    <h5 class="text-2xl font-semibold">Generate Rondom Password</h5>
-    <h6 class="text-lg text-gray-500 pt-3">
-      Secure and Safe Way to Create Password
+<section class="flex justify-between px-20 items-center">
+  <div class="relative ">
+    <h2 class="text-2xl font-semibold z-10 relative title text-slate-900">GenPass</h2>
+    <h6 class="text-3xl py-5 z-10 relative title-p">
+      Instantly generate a secure, random <span class="block">password with the GenPass online tool </span>
     </h6>
-    <div class="h-10 mt-5">
-      <button class="bg-slate-900 h-full px-4 text-gray-100 text-xl">+</button>
-      <input type="text" class="w-20" name="len" />
-      <button class="bg-slate-900 h-full px-4 text-gray-100 text-xl">-</button>
-    </div>
-    <div class="flex gap-10 justify-center pt-5">
-      <div class="flex items-center mb-4">
-        <input
-          id="ABC"
-          checked
-          type="checkbox"
-          name="uppercase"
-          value="ABC"
-          class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-        />
-        <label for="ABC" class="ms-2 text-lg font-medium">ABC</label>
+    <img src="{% static 'shield.jpg' %}" alt="Image" class="absolute top-28 right-0 z-0 w-52">
+</div>
+  <div class="flex justify-center flex-col text-center items-center mt-5">
+    <form class="mt-4 shadow-xl px-20 py-10  bg-gradient-to-b from-slate-700 to-slate-900 border  rounded-xl">
+      <h5 class="text-2xl font-semibold bg-gray-100  rounded-lg px-4 py-2">Generate Rondom Password</h5>
+     
+      <div class="h-10 mt-5">
+        <div class="flex  flex-col  items-center">
+          <input id="pi_input" size="any" min="0" value="8" max="64" type="range" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg " />
+         
+          <p  class="text-lg font-medium text-white pt-3">Range : <output id="value"></output></p>
+        </div>
       </div>
-      <div class="flex items-center mb-4">
-        <input
-          id="abc"
-          checked
-          type="checkbox"
-          name="lowercase"
-          value="abc"
-          class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-        />
-        <label for="abc" class="ms-2 text-lg font-medium">abc</label>
+      <div class="flex gap-10 justify-center pt-5">
+        <div class="flex items-center mb-4">
+          <input id="ABC" checked type="checkbox" name="uppercase" value="ABC"
+            class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+          <label for="ABC" class="ms-2 text-lg font-medium text-white">ABC</label>
+        </div>
+        <div class="flex items-center mb-4">
+          <input id="abc" checked type="checkbox" name="lowercase" value="abc"
+            class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+          <label for="abc" class="ms-2 text-lg font-medium text-white">abc</label>
+        </div>
+        <div class="flex items-center mb-4">
+          <input id="!@#" type="checkbox" value="!@#" name="special"
+            class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+          <label for="!@#" class="ms-2 text-lg font-medium text-white">!@#</label>
+        </div>
+        <div class="flex items-center mb-4">
+          <input id="12" type="checkbox" value="123" name="number"
+            class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+          <label for="12" class="ms-2 text-lg font-medium text-white">123</label>
+        </div>
       </div>
-      <div class="flex items-center mb-4">
-        <input
-          id="!@#"
-          type="checkbox"
-          value="!@#"
-          name="special"
-          class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-        />
-        <label for="!@#" class="ms-2 text-lg font-medium">!@#</label>
+      <input type="submit" checked
+        class="bg-slate-700 text-white px-4 py-2 text-lg mt-3 cursor-pointer tracking-wider rounded-md"
+        value="Click To Generate">
+      </input>
+  
+      <div
+        class="flex gap-3 justify-center items-center mt-5 bg-slate-700 py-3 mx-10 rounded-md text-lg font-semibold tracking-widest">
+        <h4 class="bg-slate-700 px-5 text-white " , name="password">{{password}}</h4>
+        <ion-icon name="copy-outline" class="text-white"></ion-icon>
       </div>
-      <div class="flex items-center mb-4">
-        <input
-          id="12"
-          type="checkbox"
-          value="123"
-          name="number"
-          class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-        />
-        <label for="12" class="ms-2 text-lg font-medium">123</label>
-      </div>
-    </div>
-    <input
-      type="submit"
-      checked
-      class="bg-slate-800 text-white px-4 py-2 text-lg mt-3 cursor-pointer tracking-wider rounded-md"
-    value="Click To Generate">
-    </input>
-
-    <div class="flex gap-3 justify-center items-center mt-5 bg-slate-800 py-3 mx-10 rounded-md text-lg font-semibold tracking-widest">
-      <h4 class="bg-slate-800 px-5 text-white ", name="password">{{password}}</h4>
-      <ion-icon name="copy-outline" class="text-white"></ion-icon>
-    </div>
-  </form>
+    </form>
+  </div>
+  
 </section>
+
+{% endblock %}
+{% block script %}
+<script>
+  const value = document.querySelector("#value");
+  const input = document.querySelector("#pi_input");
+  value.textContent = input.value;
+  console.log(value.textContent);
+  input.addEventListener("input", (event) => {
+    value.textContent = parseInt(event.target.value);
+    console.log(parseInt(event.target.value));
+  }); 
+ </script>
 {% endblock %}
