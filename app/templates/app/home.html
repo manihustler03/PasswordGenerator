@@ -21,8 +21,7 @@
      
       <div class="h-10 mt-5">
         <div class="flex  flex-col  items-center">
-          <input id="pi_input" size="any" min="0" value="8" max="64" type="range" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg " />
-         
+          <input id="pi_input" size="any" min="0" value="" max="64" type="range" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer range-lg " />
           <p  class="text-lg font-medium text-white pt-3">Range : <output id="value"></output></p>
         </div>
       </div>
@@ -66,13 +65,21 @@
 {% endblock %}
 {% block script %}
 <script>
-  const value = document.querySelector("#value");
-  const input = document.querySelector("#pi_input");
-  value.textContent = input.value;
-  console.log(value.textContent);
-  input.addEventListener("input", (event) => {
-    value.textContent = parseInt(event.target.value);
-    console.log(parseInt(event.target.value));
-  }); 
+     const valueElement = document.querySelector("#value");
+        const inputElement = document.querySelector("#pi_input");
+        function updateValue() {
+            const currentValue = inputElement.value;
+            valueElement.textContent = currentValue;
+            localStorage.setItem('range', currentValue);
+        }
+        const storedValue = localStorage.getItem('range');
+        if (storedValue !== null) {
+            inputElement.value = storedValue;
+            valueElement.textContent = storedValue;
+        }
+        inputElement.addEventListener("input", updateValue);
+
+        
+        
  </script>
 {% endblock %}
