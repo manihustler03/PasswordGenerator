@@ -24,13 +24,12 @@ def homePage(request):
     except ValueError:
         length=8
         
-
+   
+    
     if not char:
-        char.extend('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
+        char.extend('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\!@#$%^&*()/')
 
     gen_password = ''.join(random.choice(char) for i in range(length))
 
-    
-    
-    return render(request,'app/home.html', {'password':gen_password})
+    return render(request,'app/home.html', {'password':gen_password, 'length':length})
 
