@@ -24,7 +24,7 @@ def homePage(request):
         length = 8
 
     if not char:
-        char.extend('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()/')
+        char.extend('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
 
     gen_password = ''.join(random.choice(char) for i in range(length))
     
